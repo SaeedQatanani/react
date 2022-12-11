@@ -1,23 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import Tabs from './components/Tabs';
+import Details from './components/Details';
+import { useState } from 'react';
 
 function App() {
+  const arr=[{label:"Ameer",content:"Ameer Bigdady is a front end developer"},{label:"Riyad", content:"Riyad Bantaloni QA developer"}, {label:"Reina", content:"Reina FULL stack developer"}, {label:"Lina", content:"Lina KillAny"}];
+  const [tab, setTab] = useState({});
+  const assignTab = tab => setTab(tab); 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Tabs array={arr} assignTab={ assignTab }/>
+      <Details tab= {tab}/>
     </div>
   );
 }
