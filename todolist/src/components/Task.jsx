@@ -2,10 +2,11 @@ import React from 'react'
 import { useState } from 'react';
 
 const Task = (props) => {
-    const [tasks, setTasks] = useState(props.showTasks);
+    const [tasks, setTasks] = useState([]);
+    console.log(tasks);
     const handelCheck = (e, item) => {
-        console.log(item);
         item.taskStatus=e.target.checked;
+        setTasks(props.showTasks);
         props.updateTasks(tasks);
     }
     const handelDelete = (e, i) => {

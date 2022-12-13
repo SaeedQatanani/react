@@ -13,7 +13,6 @@ function App() {
   const editTasks = tasks => {
     setTasks(tasks);
   }
-  
   return (
     <div className="App">
       <TabForm taskManger={ taskManger }/>
