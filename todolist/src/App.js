@@ -7,16 +7,21 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   const taskManger = task => {
-    setTasks(tasks.concat(task));
+    setTasks([...tasks, task]);
   }
 
-  const editTasks = tasks => {
-    setTasks(tasks);
+  const editTasks = (id) => {
+    const taskToUpdate = tasks.filter((task,i)=>i==id);
+    taskToUpdate[0].taskStatus=!taskToUpdate[0].taskStatus;
+    setTasks([...tasks]);
+  }
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task,i)=>id!=i));
   }
   return (
     <div className="App">
-      <TabForm taskManger={ taskManger }/>
-      <Task showTasks={ tasks } updateTasks={ editTasks }/>
+      <TabForm todos={ tasks } taskManger={ taskManger }/>
+      <Task showTasks={ tasks } delTask={ deleteTask } updateTasks={ editTasks }/>
     </div>
   );
 }
